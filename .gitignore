@@ -2,4 +2,4 @@ app/Airport.pyc
 app/Plane.pyc
 test/test_plane.pyc
 test/test_airport.pyc
-__init__.pyc
+app/__init__.pyc
