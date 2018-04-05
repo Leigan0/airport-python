@@ -15,6 +15,10 @@ class AirportTest(unittest.TestCase):
 
     def test_airport_can_add_plane_to_hangar(self):
         self.airport.land(self.plane)
+        self.assertTrue(self.plane.land.called)
+
+    def test_airport_can_call_land_method_on_plane_added_to_hangar(self):
+        self.airport.land(self.plane)
         self.assertEqual(len(self.airport.hangar),1)
 
     def test_airport_can_add_multiple_planes_to_hangar(self):
