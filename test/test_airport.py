@@ -38,3 +38,8 @@ class AirportTest(unittest.TestCase):
         self.airport.land(self.plane2)
         self.airport.take_off(self.plane)
         self.assertEqual(self.airport.hangar, [self.plane2])
+
+    def test_airport_can_call_take_off_method_on_plane_removed_from_hangar(self):
+        self.airport.land(self.plane)
+        self.airport.take_off(self.plane)
+        self.assertTrue(self.plane.take_off.called)

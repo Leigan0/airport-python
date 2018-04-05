@@ -9,3 +9,4 @@ class Airport:
 
     def take_off(self, plane):
         self.hangar.remove(plane)
+        plane.take_off()
