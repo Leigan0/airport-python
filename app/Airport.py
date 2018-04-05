@@ -5,4 +5,4 @@ class Airport:
 
     def land(self, plane):
         self.hangar.append(plane)
-        print self.hangar
+        plane.land()
