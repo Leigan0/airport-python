@@ -2,7 +2,6 @@ import unittest
 from mock import MagicMock
 from app.Airport import Airport
 
-
 class AirportTest(unittest.TestCase):
 
     def setUp(self):
