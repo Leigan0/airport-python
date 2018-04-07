@@ -45,6 +45,11 @@ class AirportTest(unittest.TestCase):
         self.airport.take_off(self.plane)
         self.assertTrue(self.plane.take_off.called)
 
-    def test_airport_cannot_land_stormy_weather(self):
+    def test_airport_raises_exception_land_stormy_weather(self):
         self.airport.weather.is_stormy.return_value = True
         with self.assertRaises(Exception): self.airport.land(self.plane)
+
+    def test_airport_raises_exception_take_off_stormy_weather(self):
+        self.airport.land(self.plane)
+        self.airport.weather.is_stormy.return_value = True
+        with self.assertRaises(Exception): self.airport.take_off(self.plane)
