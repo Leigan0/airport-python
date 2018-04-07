@@ -30,6 +30,10 @@ As an air traffic controller
 To ensure safety
 I want to prevent landing when the airport is full
 
+As an ATC
+To ensure safety
+I want to only be able to remove planes already landed at the airport
+
 As the system designer
 So that the software can be used for many different airports
 I would like a default airport capacity that can be overridden as appropriate

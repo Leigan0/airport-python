@@ -36,6 +36,13 @@ class IntegrationTests(unittest.TestCase):
         with self.assertRaises(Exception): self.airport.land(self.plane)
         self.assertEqual(self.airport.hangar, [self.plane])
 
+    def test_plane_cannot_take_off_if_plane_not_in_hangar(self):
+        self.assertFalse(self.airport.hangar)
+        self.airport.land(self.plane)
+        with self.assertRaises(Exception): self.airport.take_off(Plane())
+        self.assertEqual(self.airport.hangar, [self.plane])
+        self.assertEqual(self.plane.flying, False)
+
     def test_airport_capacity_has_default_20(self):
         self.assertEqual(self.airport.capacity, 20)
 
