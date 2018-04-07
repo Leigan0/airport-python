@@ -53,3 +53,8 @@ class AirportTest(unittest.TestCase):
         self.airport.land(self.plane)
         self.airport.weather.is_stormy.return_value = True
         with self.assertRaises(Exception): self.airport.take_off(self.plane)
+
+    def test_airport_raises_exception_when_airport_full(self):
+        for plane in range(self.airport.DEFAULT_CAPACITY):
+            self.airport.land(self.plane)
+        with self.assertRaises(Exception): self.airport.land(self.plane)

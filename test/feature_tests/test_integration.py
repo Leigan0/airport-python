@@ -35,3 +35,8 @@ class IntegrationTests(unittest.TestCase):
         self.airport.weather.check_weather = MagicMock(return_value=0)
         with self.assertRaises(Exception): self.airport.land(self.plane)
         self.assertEqual(self.airport.hangar, [self.plane])
+
+    def test_airport_raises_exception_when_airport_full(self):
+        for plane in range(self.airport.DEFAULT_CAPACITY):
+            self.airport.land(Plane())
+        with self.assertRaises(Exception): self.airport.land(Plane())
