@@ -36,7 +36,15 @@ class IntegrationTests(unittest.TestCase):
         with self.assertRaises(Exception): self.airport.land(self.plane)
         self.assertEqual(self.airport.hangar, [self.plane])
 
+    def test_airport_capacity_has_default_20(self):
+        self.assertEqual(self.airport.capacity, 20)
+
     def test_airport_raises_exception_when_airport_full(self):
-        for plane in range(self.airport.DEFAULT_CAPACITY):
+        for plane in range(self.airport.DEFAULT_CAPACITY()):
             self.airport.land(Plane())
         with self.assertRaises(Exception): self.airport.land(Plane())
+        self.assertEqual(len(self.airport.hangar),self.airport.DEFAULT_CAPACITY())
+
+    def test_airport_capacity_can_be_overidden_at_instanciation(self):
+        airport = Airport(Weather, 30)
+        self.assertEqual(airport.capacity, 30)

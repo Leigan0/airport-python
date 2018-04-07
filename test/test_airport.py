@@ -55,6 +55,6 @@ class AirportTest(unittest.TestCase):
         with self.assertRaises(Exception): self.airport.take_off(self.plane)
 
     def test_airport_raises_exception_when_airport_full(self):
-        for plane in range(self.airport.DEFAULT_CAPACITY):
+        for plane in range(self.airport.DEFAULT_CAPACITY()):
             self.airport.land(self.plane)
         with self.assertRaises(Exception): self.airport.land(self.plane)

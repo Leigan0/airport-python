@@ -2,10 +2,13 @@ from Weather import Weather
 
 class Airport:
 
-    def __init__(self, weather):
+    def __init__(self, weather, capacity=None):
         self.hangar = []
         self.weather = weather()
-        self.DEFAULT_CAPACITY = 20
+        self.capacity = capacity or self.DEFAULT_CAPACITY()
+
+    def DEFAULT_CAPACITY(self):
+        return 20
 
     def land(self, plane):
         self.__check_weather_status()
@@ -26,5 +29,5 @@ class Airport:
             raise Exception("Weather Stormy")
 
     def __at_capacity(self):
-        if len(self.hangar) == self.DEFAULT_CAPACITY:
+        if len(self.hangar) >= self.DEFAULT_CAPACITY():
             raise Exception("Airport Full")
