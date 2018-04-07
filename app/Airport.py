@@ -17,6 +17,9 @@ class Airport:
 
     def take_off(self, plane):
         self.__check_weather_status()
+        self.__remove_plane_from_hangar(plane)
+
+    def __remove_plane_from_hangar(self, plane):
         self.hangar.remove(plane)
         plane.take_off()
 
