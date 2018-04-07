@@ -5,7 +5,9 @@ from app.Airport import Airport
 class AirportTest(unittest.TestCase):
 
     def setUp(self):
-        self.airport = Airport()
+        self.mock_weather = MagicMock()
+        self.airport = Airport(self.mock_weather)
+        self.airport.weather.is_stormy.return_value = False
         self.plane = MagicMock()
         self.plane2 = MagicMock()
 
@@ -42,3 +44,7 @@ class AirportTest(unittest.TestCase):
         self.airport.land(self.plane)
         self.airport.take_off(self.plane)
         self.assertTrue(self.plane.take_off.called)
+
+    def test_airport_cannot_land_stormy_weather(self):
+        self.airport.weather.is_stormy.return_value = True
+        with self.assertRaises(Exception): self.airport.land(self.plane)

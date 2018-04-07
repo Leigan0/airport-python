@@ -1,4 +1,5 @@
 import unittest
+from mock import MagicMock
 from app.Airport import Airport
 from app.Plane import Plane
 from app.Weather import Weather
@@ -6,9 +7,9 @@ from app.Weather import Weather
 class IntegrationTests(unittest.TestCase):
 
     def setUp(self):
-        self.weather = Weather()
-        self.airport = Airport()
+        self.airport = Airport(Weather)
         self.plane = Plane()
+        self.airport.weather.check_weather = MagicMock(return_value=2)
 
     def test_airport_can_store_plane_object(self):
         self.assertFalse(self.airport.hangar)
