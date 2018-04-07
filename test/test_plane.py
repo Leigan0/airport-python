@@ -13,6 +13,14 @@ class PlaneTest(unittest.TestCase):
         self.plane.land()
         self.assertEqual(self.plane.flying, False)
 
+    def test_plane_raises_exception_land_if_flying_false(self):
+        self.plane.land()
+        with self.assertRaises(Exception): self.plane.land()
+
     def test_plane_take_off(self):
         self.plane.take_off()
         self.assertEqual(self.plane.flying, True)
+
+    def test_plane_raises_exception_land_if_flying_true(self):
+        self.plane.take_off()
+        with self.assertRaises(Exception): self.plane.take_off()
