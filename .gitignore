@@ -4,4 +4,5 @@ app/Weather.pyc
 test/test_plane.pyc
 test/test_airport.pyc
 test/test_weather.pyc
+test/feature_tests/test_integration.pyc
 app/__init__.pyc
