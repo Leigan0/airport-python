@@ -12,20 +12,16 @@ class WeatherTest(unittest.TestCase):
 
     def test_stormy_returns_true_if_rand_method_less_than_2(self):
         self.weather.check_weather = MagicMock(return_value=1)
-        self.weather.is_stormy()
-        self.assertTrue(self.weather.stormy)
+        self.assertTrue(self.weather.is_stormy())
 
     def test_stormy_returns_true_if_rand_method_less_than_2(self):
         self.weather.check_weather = MagicMock(return_value=0)
-        self.weather.is_stormy()
-        self.assertTrue(self.weather.stormy)
+        self.assertTrue(self.weather.is_stormy())
 
     def test_stormy_returns_false_if_rand_method_more_than_2(self):
         self.weather.check_weather = MagicMock(return_value=2)
-        self.weather.is_stormy()
         self.assertFalse(self.weather.stormy)
 
     def test_stormy_returns_false_if_rand_method_more_than_2(self):
         self.weather.check_weather = MagicMock(return_value=5)
-        self.weather.is_stormy()
-        self.assertFalse(self.weather.stormy)
+        self.assertFalse(self.weather.is_stormy())
