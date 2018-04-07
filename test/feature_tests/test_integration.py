@@ -17,6 +17,12 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(self.plane.flying, False)
         self.assertEqual(self.airport.hangar, [self.plane])
 
+    def test_plane_cannot_land_if_weather_object_confirms_stormy(self):
+        self.airport.weather.check_weather = MagicMock(return_value=0)
+        self.assertFalse(self.airport.hangar)
+        with self.assertRaises(Exception): self.airport.land(self.plane)
+        self.assertFalse(self.airport.hangar)
+
     def test_airport_can_takeoff_plane_object(self):
         self.airport.land(self.plane)
         self.assertEqual(self.airport.hangar, [self.plane])
